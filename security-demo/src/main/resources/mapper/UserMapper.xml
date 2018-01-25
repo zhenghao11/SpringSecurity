@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.my.security.mapper.UserMapper">
+    <insert id="add" parameterType="com.my.security.dataobject.User">
+        insert into user values (#{id},#{username},#{password},now())
+    </insert>
+    <select id="login" resultType="com.my.security.dataobject.User">
+        select * from user where user_name=#{userName} and password=#{password}
+    </select>
+    <select id="selectByUsername" resultType="com.my.security.dataobject.User">
+        select * from user where username = #{username}
+    </select>
+
+    <update id="updateByParams" parameterType="com.my.security.dataobject.User">
+        update user
+        <trim prefix="set" suffixOverrides=",">
+            <if test="userName!=null and userName!= ''">
+                user_name=#{userName},
+            </if>
+            <if test="password!=null and password!=''">
+                password=#{password},
+            </if>
+            <if test="lastOutTime!=null and lastOutTime!=''">
+                lastOutTime=#{lastOutTime},
+            </if>
+        </trim>
+        where id=#{id}
+    </update>
+</mapper>

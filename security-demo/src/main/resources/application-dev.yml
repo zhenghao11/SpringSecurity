@@ -1,0 +1,23 @@
+server:
+  port: 8000
+  context-path: /
+spring:
+  redis:
+    port: 6379
+    host: 127.0.0.1
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/springaboutme?characterEncoding=utf-8&useSSL=false
+    username: root
+    password: root
+  session:
+    store-type: redis
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.my.security.dataobject
+## 自定义常量
+xinge:
+  security:
+    oauth2:
+    ## token存储方式
+      tokenStoreType: jwt

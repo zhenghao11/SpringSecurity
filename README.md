@@ -1,0 +1,3 @@
+# SpringSecurity
+初始化SpringSecurity  包含browser端安全配置和app端access_token的获取以及refresh_token
+暂无第三方登录
